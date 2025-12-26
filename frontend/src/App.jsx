@@ -65,7 +65,11 @@ function App() {
     };
 
     try {
-      const response = await fetch('http://localhost:8000/predict', {
+      // Use relative path for production (Vercel rewrites)
+      // Or fallback to localhost for local dev if not proxied
+      const apiUrl = import.meta.env.PROD ? '/predict' : 'http://localhost:8000/predict';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
