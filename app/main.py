@@ -1,10 +1,20 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 import pandas as pd
 import numpy as np
 
 app = FastAPI()
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permitir todos los orígenes en desarrollo
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 '''
 Cargar modelo, escalador y columnas
@@ -33,11 +43,11 @@ class HouseInput(BaseModel):
 def predict_price(features: HouseInput):
     try:
         # Pydantic a DataFrame
-        input_data = pd.DateFrame([features.dict()])
+        input_data = pd.DataFrame([features.dict()])
         # Alinear columnas
         input_data = input_data.reindex(columns=model_columns, fill_value=0)
         # Columnas a escalar
-        vars_to_scale = ['area', 'bedrooms', 'bathroomes', 'stories', 'parking']
+        vars_to_scale = ['area', 'bedrooms', 'bathrooms', 'stories', 'parking']
         # Escalar
         input_data[vars_to_scale] = scaler.transform(input_data[vars_to_scale])
         # Predecir
