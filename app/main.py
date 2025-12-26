@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 import numpy as np
+import os
 
 app = FastAPI()
 
@@ -16,11 +17,12 @@ app.add_middleware(
 )
 
 '''
-Cargar modelo, escalador y columnas
+Cargar modelo, escalador y columnas usando paths absolutos
 '''
-model = joblib.load('modelo_housing.joblib')
-scaler = joblib.load('escalador_housing.joblib')
-model_columns = joblib.load('columnas_housing.joblib')
+current_dir = os.path.dirname(__file__)
+model = joblib.load(os.path.join(current_dir, 'modelo_housing.joblib'))
+scaler = joblib.load(os.path.join(current_dir, 'escalador_housing.joblib'))
+model_columns = joblib.load(os.path.join(current_dir, 'columnas_housing.joblib'))
 
 '''
 Definir esquema de datos de entrada
