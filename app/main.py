@@ -17,12 +17,14 @@ app.add_middleware(
 )
 
 '''
-Cargar modelo, escalador y columnas usando paths absolutos
+Cargar modelo y escalador usando paths absolutos
 '''
 current_dir = os.path.dirname(__file__)
 model = joblib.load(os.path.join(current_dir, 'modelo_housing.joblib'))
 scaler = joblib.load(os.path.join(current_dir, 'escalador_housing.joblib'))
-model_columns = joblib.load(os.path.join(current_dir, 'columnas_housing.joblib'))
+
+# Definir columnas manualmente para evitar dependencia de Pandas (el archivo joblib original es un Index de Pandas)
+model_columns = ['area', 'bedrooms', 'bathrooms', 'stories', 'mainroad', 'basement', 'hotwaterheating', 'airconditioning', 'parking', 'prefarea']
 
 '''
 Definir esquema de datos de entrada
