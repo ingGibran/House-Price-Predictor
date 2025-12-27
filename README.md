@@ -1,37 +1,38 @@
-# HOUSE PRICE PREDICTOR
+# 🏡 House Price Predictor
 
-## Technologies
-* Python
-* NumPy
-* Pandas
-* Scikit-Learn
-* FastAPI
+A **Machine Learning–based web application** for predicting house prices using property features.  
+The project exposes a **FastAPI backend** and can be connected to a web frontend for user interaction.
 
-## Files
-* app ->
-* notebooks ->
-* data ->
-* requirements.txt
+---
 
-## Data Structure
+## 🧠 Overview
 
-Target Variable (y):
-price: The sale price of the house (numerical/continuous).
+This project includes:
 
-Features (X):
+- 🤖 A **Machine Learning model** for house price prediction  
+- ⚡ A **FastAPI REST API** for inference  
+- 🌐 A web interface
+- 📊 A clean structure for training, evaluation, and deployment
 
-### Numerical:
-* area: Total size of the house in square feet.
-* bedrooms: Number of bedrooms.
-* bathrooms: Number of bathrooms.
-* stories: Number of levels/floors in the house.
-* parking: Number of parking spaces available.
+It is designed as a **production-ready ML project** and a great portfolio piece.
 
-### Categorical / Boolean:
-* mainroad: Whether the house is connected to the main road (yes/no).
-* guestroom: Whether the house has a guest room (yes/no).
-* basement: Whether the house has a basement (yes/no).
-* hotwaterheating: Whether the house has a hot water heating system (yes/no).
-* airconditioning: Whether the house has AC (yes/no).
-* prefarea: Whether the house is located in a preferred area (yes/no).
-* furnishingstatus: Furnishing condition of the house (furnished, semi-furnished, unfurnished).
+---
+
+## 🧩 Tech Stack
+
+- Python  
+- FastAPI  
+- scikit-learn  
+- pandas, NumPy  
+- HTML / CSS / JavaScript (frontend)  
+- Jupyter Notebook (EDA & training)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ingGibran/House-Price-Predictor.git
+cd House-Price-Predictor
